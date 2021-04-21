@@ -17,20 +17,24 @@ const Header = (props) => {
     <div>
       <h1 className="text-center">Todo apps</h1>
       <div className="container d-flex justify-content-center mt-5">
-        <input
+      <input
           onBlur={(e) => setValue(e.target.value)}
           type="text"
           className="form-control w-50"
+          value={value}
+          onChange={(evt) => setValue(evt.target.value)}
         />
         <button
           className="btn btn-success"
-          onClick={() =>
+          onClick={() =>{
             dispatch(
               createTodo({
                 id: Math.round(Math.random() * 500),
                 text: value,
               })
             )
+            setValue("")
+            }
           }
         >
           add

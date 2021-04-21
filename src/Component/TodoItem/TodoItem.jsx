@@ -15,7 +15,7 @@ const TodoItem = ({ data }) => {
       id: id,
       updateValue: value,
     };
-    if (data.updateValue) {
+    if (update) {
       //   console.log(data.updateValue);
       dispatch(updateTodo(data));
     }

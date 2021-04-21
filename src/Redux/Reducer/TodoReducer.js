@@ -13,11 +13,18 @@ const TodoReducer = (state = int, action) => {
       return todo;
     case Type.UPDATE_TODO:
       let allTodo = [...state];
-      let updateValue = allTodo.find((todo) => todo.id == action.payload.id);
-      updateValue.text = action.payload.updateValue;
-      updateValue.id = action.payload.id;
-      allTodo.push(updateValue);
-      return allTodo;
+      let newTodos = allTodo.map((todo) => {
+        if(todo.id == action.payload.id){
+          // update if found the updated todo
+          todo.text = action.payload.updateValue
+          return todo
+        }else{
+          // else return origin without modify
+          return todo
+        }
+       
+      })
+      return newTodos;
     default:
       return state;
   }
